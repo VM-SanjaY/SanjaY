@@ -1,5 +1,4 @@
-# SanjaY
-Simple Ticket booking system using Python
+# Simple Ticket booking system using Python
 
 Created a simple ticket booking system using libraries like mysql.connector, smptlib, emailmessage, maskpass and time under python. 
 
