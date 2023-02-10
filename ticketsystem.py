@@ -18,15 +18,15 @@ except:
 
 def mail():
     em = EmailMessage()
-    em['From'] = "email"
+    em['From'] = "EMAILID"
     em['To'] = email
     em['Subject'] = subject
     em.set_content(body)
 
     with smtplib.SMTP(host='smtp.gmail.com', port=587) as server:
         server.starttls()
-        server.login("emailID", "password")
-        server.sendmail('emailID', email, em.as_string())
+        server.login("EMAILID", "password")
+        server.sendmail('"EMAILID"', email, em.as_string())
         print("Mail sent successfully")
         server.quit()
 
@@ -48,7 +48,7 @@ def register():
     fromnoro = [(name, username, phone, email, conpass)]
     mycursor.executemany(sqlinsert, fromnoro)
     mydb.commit()
-    body = nane," your details registered Successfully"
+    body = name," your details registered Successfully"
     subject = "ticket reservation system"
     mail()
 
@@ -63,7 +63,7 @@ please login to continue
     while True:
         while True:
             email = input("Email ID: ")
-            passwo = input("Password: ")
+            passwo = maskpass.askpass("Password: ")
             check = "SELECT email FROM User_table where email = %s"
             val = (passwo, email)
             mycursor.execute(check, (email,))
@@ -84,7 +84,7 @@ please login to continue
         else:
             print("Login failed")
             print("Try again")
-    
+
 def booking():
     global body
     global subject
@@ -102,7 +102,6 @@ Choose a destination you want to travel to:
     inp = int(input("Where do you want to travel (1 to 4): "))
 
     if inp == 1:
-        email = "sanjaydragneel07@gmail.com"
         mycursor.execute("SELECT destination, seats_availability from Destination_table where sno = 1")
         myresult = mycursor.fetchall()
         for y in myresult:
@@ -120,6 +119,12 @@ Choose a destination you want to travel to:
             myresult = mycursor.fetchall()
             for x in myresult:
                 pass
+            x= x[0]
+            result = (x - how)
+            up = "UPDATE Destination_table SET seats_availability = %s WHERE sno = 1"
+            mycursor.execute(up, (result,))
+            mydb.commit()
+            time.sleep(2)
             print("Ticket Booked Successfully")
             data = ("SELECT name from user_table WHERE email = %s")
             mycursor.execute(data, (email,))
@@ -137,7 +142,6 @@ Choose a destination you want to travel to:
             mail()
 
     elif inp == 2:
-        email = "sanjaydragneel07@gmail.com"
         mycursor.execute("SELECT destination, seats_availability from Destination_table where sno = 2")
         myresult = mycursor.fetchall()
         for y in myresult:
@@ -155,6 +159,12 @@ Choose a destination you want to travel to:
             myresult = mycursor.fetchall()
             for x in myresult:
                 pass
+            x = x[0]
+            result = (x - how)
+            up = "UPDATE Destination_table SET seats_availability = %s WHERE sno = 2"
+            mycursor.execute(up, (result,))
+            mydb.commit()
+            time.sleep(2)
             print("Ticket Booked Successfully")
             data = ("SELECT name from user_table WHERE email = %s")
             mycursor.execute(data, (email,))
@@ -172,7 +182,6 @@ Choose a destination you want to travel to:
             mail()
 
     elif inp == 3:
-        email = "sanjaydragneel07@gmail.com"
         mycursor.execute("SELECT destination, seats_availability from Destination_table where sno = 3")
         myresult = mycursor.fetchall()
         for y in myresult:
@@ -190,6 +199,12 @@ Choose a destination you want to travel to:
             myresult = mycursor.fetchall()
             for x in myresult:
                 pass
+            x = x[0]
+            result = (x - how)
+            up = "UPDATE Destination_table SET seats_availability = %s WHERE sno = 3"
+            mycursor.execute(up, (result,))
+            mydb.commit()
+            time.sleep(2)
             print("Ticket Booked Successfully")
             data = ("SELECT name from user_table WHERE email = %s")
             mycursor.execute(data, (email,))
@@ -207,7 +222,6 @@ Choose a destination you want to travel to:
             mail()
 
     elif inp == 4:
-        email = "sanjaydragneel07@gmail.com"
         mycursor.execute("SELECT destination, seats_availability from Destination_table where sno = 4")
         myresult = mycursor.fetchall()
         for y in myresult:
@@ -225,6 +239,12 @@ Choose a destination you want to travel to:
             myresult = mycursor.fetchall()
             for x in myresult:
                 pass
+            x = x[0]
+            result = (x - how)
+            up = "UPDATE Destination_table SET seats_availability = %s WHERE sno = 4"
+            mycursor.execute(up, (result,))
+            mydb.commit()
+            time.sleep(2)
             print("Ticket Booked Successfully")
             data = ("SELECT name from user_table WHERE email = %s")
             mycursor.execute(data, (email,))
